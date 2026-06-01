@@ -1,0 +1,12 @@
+fraud_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: stripe-fraud-analytics
+      dataset: dbt_dev
+      keyfile: ../gcp-key.json
+      threads: 4
+      timeout_seconds: 300
+      location: US

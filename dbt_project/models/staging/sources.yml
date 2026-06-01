@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: raw
+    database: stripe-fraud-analytics
+    schema: raw
+    tables:
+      - name: transactions
+        description: "Raw credit card transactions from ULB Kaggle dataset. 284,807 rows, September 2013, European cardholders."
+        columns:
+          - name: time
+            description: "Seconds elapsed since first transaction."
+          - name: amount
+            description: "Transaction amount in EUR."
+          - name: class
+            description: "1 = fraud, 0 = legitimate. 492 fraud out of 284,807 total."
