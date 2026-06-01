@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_transactions
+    description: "Cleaned and typed credit card transactions. Surrogate key added, timestamp derived from seconds elapsed."
+    columns:
+      - name: transaction_id
+        description: "Surrogate key derived from time, amount, v1, v14."
+        tests:
+          - unique
+          - not_null
+      - name: is_fraud
+        description: "1 = fraudulent transaction, 0 = legitimate."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1]
+      - name: transaction_amount_eur
+        description: "Transaction amount in EUR."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 30000
+      - name: transaction_timestamp
+        description: "Derived timestamp starting from 2013-09-01."
+        tests:
+          - not_null
