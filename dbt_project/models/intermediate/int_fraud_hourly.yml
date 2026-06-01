@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: int_fraud_hourly
+    description: "Hourly aggregation of transactions with fraud metrics."
+    columns:
+      - name: hour
+        description: "Truncated timestamp to hour."
+        tests:
+          - not_null
+      - name: total_transactions
+        description: "Total transactions in this hour."
+        tests:
+          - not_null
+      - name: fraud_rate
+        description: "Fraud transactions as a ratio of total transactions."
+        tests:
+          - not_null
+
+  - name: int_amount_segments
+    description: "Transaction counts and fraud rates by amount segment and time of day."
+    columns:
+      - name: amount_segment
+        description: "zero / micro / small / medium / large."
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['zero', 'micro', 'small', 'medium', 'large']
+      - name: fraud_rate
+        description: "Fraud rate within this segment and time of day."
+        tests:
+          - not_null
