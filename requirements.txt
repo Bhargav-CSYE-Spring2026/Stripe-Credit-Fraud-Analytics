@@ -1,6 +1,7 @@
 pandas==2.2.0
 google-cloud-bigquery==3.17.0
 db-dtypes==1.2.0
+pandas-gbq==0.26.1
 sqlfluff==3.0.6
 pre-commit==3.6.0
 dbt-bigquery==1.8.0
