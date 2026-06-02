@@ -1,0 +1,52 @@
+metrics:
+  - name: fraud_rate
+    label: "Daily fraud rate"
+    description: "Fraudulent transactions as a percentage of all transactions per day."
+    type: ratio
+    type_params:
+      numerator:
+        name: daily_fraud_count
+      denominator:
+        name: daily_transactions
+
+  - name: total_fraud_volume_eur
+    label: "Total fraud volume (EUR)"
+    description: "Total EUR value of fraudulent transactions."
+    type: simple
+    type_params:
+      measure:
+        name: daily_fraud_amount_eur
+
+  - name: total_transaction_volume_eur
+    label: "Total transaction volume (EUR)"
+    description: "Total EUR value of all transactions."
+    type: simple
+    type_params:
+      measure:
+        name: daily_volume_eur
+
+  - name: fraud_amount_rate
+    label: "Fraud amount rate"
+    description: "Fraud EUR volume as a percentage of total transaction volume."
+    type: ratio
+    type_params:
+      numerator:
+        name: daily_fraud_amount_eur
+      denominator:
+        name: daily_volume_eur
+
+  - name: total_transactions
+    label: "Total transactions"
+    description: "Total number of transactions."
+    type: simple
+    type_params:
+      measure:
+        name: daily_transactions
+
+  - name: total_fraud_count
+    label: "Total fraud cases"
+    description: "Total number of fraudulent transactions."
+    type: simple
+    type_params:
+      measure:
+        name: daily_fraud_count

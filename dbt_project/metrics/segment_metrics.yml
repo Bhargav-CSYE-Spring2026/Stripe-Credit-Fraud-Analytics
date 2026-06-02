@@ -1,0 +1,18 @@
+metrics:
+  - name: segment_fraud_rate
+    label: "Fraud rate by segment"
+    description: "Fraud rate within each amount segment and time of day combination."
+    type: ratio
+    type_params:
+      numerator:
+        name: segment_fraud_count
+      denominator:
+        name: segment_transactions
+
+  - name: segment_fraud_volume_eur
+    label: "Fraud volume by segment (EUR)"
+    description: "Total EUR value of fraud within each segment."
+    type: simple
+    type_params:
+      measure:
+        name: segment_fraud_amount_eur

@@ -1,0 +1,26 @@
+semantic_models:
+  - name: segments
+    description: "Segment grain semantic model for fraud by amount and time of day."
+    model: ref('fct_fraud_by_segment')
+    defaults:
+      agg_time_dimension: null
+
+    dimensions:
+      - name: amount_segment
+        type: categorical
+      - name: time_of_day
+        type: categorical
+
+    measures:
+      - name: segment_transactions
+        description: "Total transactions in this segment."
+        agg: sum
+        expr: total_transactions
+      - name: segment_fraud_count
+        description: "Total fraud cases in this segment."
+        agg: sum
+        expr: fraud_count
+      - name: segment_fraud_amount_eur
+        description: "Total fraud amount in EUR in this segment."
+        agg: sum
+        expr: total_amount_eur

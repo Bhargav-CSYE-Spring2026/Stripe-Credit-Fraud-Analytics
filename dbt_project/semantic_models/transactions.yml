@@ -1,0 +1,30 @@
+semantic_models:
+  - name: transactions
+    description: "Transaction grain semantic model for fraud analytics."
+    model: ref('fct_fraud_daily')
+    defaults:
+      agg_time_dimension: txn_date
+
+    dimensions:
+      - name: txn_date
+        type: time
+        type_params:
+          time_granularity: day
+
+    measures:
+      - name: daily_transactions
+        description: "Total transactions per day."
+        agg: sum
+        expr: daily_transactions
+      - name: daily_fraud_count
+        description: "Total fraud cases per day."
+        agg: sum
+        expr: daily_fraud_count
+      - name: daily_volume_eur
+        description: "Total transaction volume in EUR per day."
+        agg: sum
+        expr: daily_volume_eur
+      - name: daily_fraud_amount_eur
+        description: "Total fraud amount in EUR per day."
+        agg: sum
+        expr: daily_fraud_amount_eur
