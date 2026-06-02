@@ -21,15 +21,12 @@ jobs:
         run: pip install dbt-core==1.11.6 dbt-bigquery==1.11.1
 
       - name: Create GCP key file
+        env:
+          GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
         run: |
-          cat > gcp-key.json << 'GCPEOF'
-          ${{ secrets.GCP_CREDENTIALS }}
-          GCPEOF
-
-      - name: Verify key file
-        run: |
+          printf '%s' "$GCP_CREDENTIALS" > gcp-key.json
           echo "File size: $(wc -c < gcp-key.json) bytes"
-          head -1 gcp-key.json
+          python3 -c "import json,sys; json.load(open('gcp-key.json')); print('JSON valid')"
 
       - name: Write dbt profiles
         run: |
