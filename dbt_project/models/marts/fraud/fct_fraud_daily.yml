@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: fct_fraud_daily
+    description: "Daily fraud metrics aggregated from hourly data. Primary mart for dashboards."
+    columns:
+      - name: txn_date
+        description: "Transaction date."
+        tests:
+          - unique
+          - not_null
+      - name: daily_transactions
+        description: "Total transactions on this date."
+        tests:
+          - not_null
+      - name: daily_fraud_count
+        description: "Total fraudulent transactions on this date."
+        tests:
+          - not_null
+      - name: daily_fraud_rate
+        description: "Fraud transactions as a ratio of total daily transactions."
+        tests:
+          - not_null
+
+  - name: fct_fraud_by_segment
+    description: "Fraud rates by transaction amount segment and time of day."
+    columns:
+      - name: amount_segment
+        description: "zero / micro / small / medium / large."
+        tests:
+          - not_null
+      - name: fraud_rate
+        description: "Fraud rate within this segment and time of day combination."
+        tests:
+          - not_null
