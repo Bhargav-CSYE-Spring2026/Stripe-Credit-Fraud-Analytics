@@ -21,12 +21,12 @@ jobs:
         run: pip install dbt-bigquery==1.8.0
 
       - name: Write GCP credentials
-        run: echo '${{ secrets.GCP_CREDENTIALS }}' > gcp-key.json
+        run: echo '${{ secrets.GCP_CREDENTIALS }}' > ${{ github.workspace }}/gcp-key.json
 
       - name: Write dbt profiles
         run: |
           mkdir -p ~/.dbt
-          cat > ~/.dbt/profiles.yml << 'PROFILE'
+          cat > ~/.dbt/profiles.yml << PROFILE
           fraud_analytics:
             target: ci
             outputs:
@@ -35,7 +35,7 @@ jobs:
                 method: service-account
                 project: stripe-fraud-analytics
                 dataset: dbt_ci
-                keyfile: gcp-key.json
+                keyfile: ${{ github.workspace }}/gcp-key.json
                 threads: 4
                 timeout_seconds: 300
                 location: US
