@@ -18,15 +18,18 @@ jobs:
           python-version: '3.11'
 
       - name: Install dbt
-        run: |
-          pip install dbt-core==1.11.6 dbt-bigquery==1.11.1
+        run: pip install dbt-core==1.11.6 dbt-bigquery==1.11.1
 
-      - name: Write GCP credentials
-        env:
-          GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+      - name: Create GCP key file
         run: |
-          echo "$GCP_CREDENTIALS" > gcp-key.json
-          cat gcp-key.json | python3 -c "import sys,json; json.load(sys.stdin); print('JSON valid')"
+          cat > gcp-key.json << 'GCPEOF'
+          ${{ secrets.GCP_CREDENTIALS }}
+          GCPEOF
+
+      - name: Verify key file
+        run: |
+          echo "File size: $(wc -c < gcp-key.json) bytes"
+          head -1 gcp-key.json
 
       - name: Write dbt profiles
         run: |
