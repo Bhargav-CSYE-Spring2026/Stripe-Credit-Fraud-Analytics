@@ -34,3 +34,7 @@ Source: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 - GitHub Actions runs dbt parse, compile, and test on every PR
 - All 19 dbt tests pass across staging, intermediate, and marts layers
 - Branch protection enforced — no direct commits to main
+
+## Documentation
+Live dbt docs with full lineage, model descriptions, and test coverage:
+https://bhargav-csye-spring2026.github.io/Stripe-Credit-Fraud-Analytics
