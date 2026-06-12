@@ -23,10 +23,7 @@ jobs:
       - name: Create GCP key file
         env:
           GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
-        run: |
-          printf '%s' "$GCP_CREDENTIALS" > gcp-key.json
-          echo "File size: $(wc -c < gcp-key.json) bytes"
-          python3 -c "import json,sys; json.load(open('gcp-key.json')); print('JSON valid')"
+        run: printf '%s' "$GCP_CREDENTIALS" > gcp-key.json
 
       - name: Write dbt profiles
         run: |
@@ -57,6 +54,10 @@ jobs:
       - name: dbt compile
         working-directory: dbt_project
         run: dbt compile
+
+      - name: dbt run — staging
+        working-directory: dbt_project
+        run: dbt run --select staging
 
       - name: dbt test — staging
         working-directory: dbt_project
