@@ -29,3 +29,8 @@ Source: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 - 773 duplicate rows found in raw data — handled via row_number() deduplication in staging
 - Fraud rate: 0.172% (492 out of 284,807 transactions)
 - Fraud concentrated in micro and small transaction segments
+
+## CI/CD
+- GitHub Actions runs dbt parse, compile, and test on every PR
+- All 19 dbt tests pass across staging, intermediate, and marts layers
+- Branch protection enforced — no direct commits to main
