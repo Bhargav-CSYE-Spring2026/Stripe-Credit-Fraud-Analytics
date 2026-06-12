@@ -1,0 +1,63 @@
+name: dbt Docs
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  dbt-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dbt
+        run: pip install dbt-core==1.11.6 dbt-bigquery==1.11.1
+
+      - name: Create GCP key file
+        env:
+          GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+        run: printf '%s' "$GCP_CREDENTIALS" > gcp-key.json
+
+      - name: Write dbt profiles
+        run: |
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml << PROFILE
+          fraud_analytics:
+            target: ci
+            outputs:
+              ci:
+                type: bigquery
+                method: service-account
+                project: stripe-fraud-analytics
+                dataset: dbt_ci
+                keyfile: $PWD/gcp-key.json
+                threads: 4
+                timeout_seconds: 300
+                location: US
+          PROFILE
+
+      - name: dbt deps
+        working-directory: dbt_project
+        run: dbt deps
+
+      - name: dbt run
+        working-directory: dbt_project
+        run: dbt run
+
+      - name: dbt docs generate
+        working-directory: dbt_project
+        run: dbt docs generate
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dbt_project/target
+          publish_branch: gh-pages
