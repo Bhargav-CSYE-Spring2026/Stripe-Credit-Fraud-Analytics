@@ -1,0 +1,169 @@
+{
+  "daily": [
+    {
+      "txn_date": "2013-09-01",
+      "daily_transactions": 144236,
+      "daily_fraud_count": 272,
+      "daily_volume_eur": 13062078.6,
+      "daily_fraud_amount_eur": 32468.94,
+      "daily_fraud_rate": 0.0018857982750492249
+    },
+    {
+      "txn_date": "2013-09-02",
+      "daily_transactions": 139490,
+      "daily_fraud_count": 201,
+      "daily_volume_eur": 12039923.08,
+      "daily_fraud_amount_eur": 26122.45,
+      "daily_fraud_rate": 0.0014409635099290271
+    }
+  ],
+  "segments": [
+    {
+      "amount_segment": "zero",
+      "time_of_day": "night",
+      "total_transactions": 258,
+      "fraud_count": 8,
+      "fraud_rate": 0.031007751937984496
+    },
+    {
+      "amount_segment": "zero",
+      "time_of_day": "afternoon",
+      "total_transactions": 586,
+      "fraud_count": 10,
+      "fraud_rate": 0.017064846416382253
+    },
+    {
+      "amount_segment": "large",
+      "time_of_day": "night",
+      "total_transactions": 214,
+      "fraud_count": 2,
+      "fraud_rate": 0.009345794392523364
+    },
+    {
+      "amount_segment": "zero",
+      "time_of_day": "morning",
+      "total_transactions": 594,
+      "fraud_count": 5,
+      "fraud_rate": 0.008417508417508417
+    },
+    {
+      "amount_segment": "micro",
+      "time_of_day": "night",
+      "total_transactions": 13283,
+      "fraud_count": 76,
+      "fraud_rate": 0.005721599036362267
+    },
+    {
+      "amount_segment": "zero",
+      "time_of_day": "evening",
+      "total_transactions": 370,
+      "fraud_count": 2,
+      "fraud_rate": 0.005405405405405406
+    },
+    {
+      "amount_segment": "medium",
+      "time_of_day": "night",
+      "total_transactions": 4727,
+      "fraud_count": 25,
+      "fraud_rate": 0.0052887666596149775
+    },
+    {
+      "amount_segment": "large",
+      "time_of_day": "evening",
+      "total_transactions": 662,
+      "fraud_count": 3,
+      "fraud_rate": 0.004531722054380665
+    },
+    {
+      "amount_segment": "large",
+      "time_of_day": "afternoon",
+      "total_transactions": 1290,
+      "fraud_count": 3,
+      "fraud_rate": 0.002325581395348837
+    },
+    {
+      "amount_segment": "micro",
+      "time_of_day": "afternoon",
+      "total_transactions": 29423,
+      "fraud_count": 62,
+      "fraud_rate": 0.0021071950514903307
+    },
+    {
+      "amount_segment": "medium",
+      "time_of_day": "afternoon",
+      "total_transactions": 21049,
+      "fraud_count": 40,
+      "fraud_rate": 0.0019003278065466292
+    },
+    {
+      "amount_segment": "medium",
+      "time_of_day": "morning",
+      "total_transactions": 14749,
+      "fraud_count": 27,
+      "fraud_rate": 0.0018306325852600175
+    },
+    {
+      "amount_segment": "medium",
+      "time_of_day": "evening",
+      "total_transactions": 13687,
+      "fraud_count": 24,
+      "fraud_rate": 0.001753488711916417
+    },
+    {
+      "amount_segment": "micro",
+      "time_of_day": "morning",
+      "total_transactions": 20921,
+      "fraud_count": 34,
+      "fraud_rate": 0.0016251613211605564
+    },
+    {
+      "amount_segment": "small",
+      "time_of_day": "morning",
+      "total_transactions": 33481,
+      "fraud_count": 51,
+      "fraud_rate": 0.0015232519936680506
+    },
+    {
+      "amount_segment": "micro",
+      "time_of_day": "evening",
+      "total_transactions": 31438,
+      "fraud_count": 41,
+      "fraud_rate": 0.0013041542082829697
+    },
+    {
+      "amount_segment": "small",
+      "time_of_day": "night",
+      "total_transactions": 16243,
+      "fraud_count": 21,
+      "fraud_rate": 0.0012928646186049376
+    },
+    {
+      "amount_segment": "large",
+      "time_of_day": "morning",
+      "total_transactions": 898,
+      "fraud_count": 1,
+      "fraud_rate": 0.0011135857461024498
+    },
+    {
+      "amount_segment": "small",
+      "time_of_day": "evening",
+      "total_transactions": 36080,
+      "fraud_count": 20,
+      "fraud_rate": 0.0005543237250554324
+    },
+    {
+      "amount_segment": "small",
+      "time_of_day": "afternoon",
+      "total_transactions": 43773,
+      "fraud_count": 18,
+      "fraud_rate": 0.0004112123912000548
+    }
+  ],
+  "summary": {
+    "total_transactions": 283726,
+    "total_fraud": 473,
+    "total_volume_eur": 25102001.68,
+    "total_fraud_amount_eur": 58591.39,
+    "overall_fraud_rate": 0.001667101358352777
+  }
+}
